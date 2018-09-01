@@ -22,7 +22,7 @@ namespace StockControl
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dbBarcodeNab")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dbMTEC")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,9 +30,6 @@ namespace StockControl
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertErrorLog(ErrorLog instance);
-    partial void UpdateErrorLog(ErrorLog instance);
-    partial void DeleteErrorLog(ErrorLog instance);
     partial void InsertOpenForm(OpenForm instance);
     partial void UpdateOpenForm(OpenForm instance);
     partial void DeleteOpenForm(OpenForm instance);
@@ -114,6 +111,9 @@ namespace StockControl
     partial void Inserttb_CheckStockTempCheck(tb_CheckStockTempCheck instance);
     partial void Updatetb_CheckStockTempCheck(tb_CheckStockTempCheck instance);
     partial void Deletetb_CheckStockTempCheck(tb_CheckStockTempCheck instance);
+    partial void InsertErrorLog(ErrorLog instance);
+    partial void UpdateErrorLog(ErrorLog instance);
+    partial void DeleteErrorLog(ErrorLog instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -144,14 +144,6 @@ namespace StockControl
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<ErrorLog> ErrorLogs
-		{
-			get
-			{
-				return this.GetTable<ErrorLog>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Layout_Screen> Layout_Screens
@@ -402,6 +394,14 @@ namespace StockControl
 			}
 		}
 		
+		public System.Data.Linq.Table<ErrorLog> ErrorLogs
+		{
+			get
+			{
+				return this.GetTable<ErrorLog>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_ADM03_OpenFormSelect")]
 		public ISingleResult<Sp_ADM03_OpenFormSelectResult> Sp_ADM03_OpenFormSelect()
 		{
@@ -524,236 +524,6 @@ namespace StockControl
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), checkNo, location, code);
 			return ((ISingleResult<sp_E_002_Excel_tb_CheckStockListResult>)(result.ReturnValue));
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ErrorLog")]
-	public partial class ErrorLog : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ErrorLogNo;
-		
-		private string _ErrorMethod;
-		
-		private string _ErrorLogMessage;
-		
-		private string _ErrorLogScreen;
-		
-		private System.Nullable<System.DateTime> _ErrorLogDateTime;
-		
-		private string _ErrorLogBy;
-		
-		private string _ErrorMachineName;
-		
-		private string _ErrorLoginMachineName;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnErrorLogNoChanging(long value);
-    partial void OnErrorLogNoChanged();
-    partial void OnErrorMethodChanging(string value);
-    partial void OnErrorMethodChanged();
-    partial void OnErrorLogMessageChanging(string value);
-    partial void OnErrorLogMessageChanged();
-    partial void OnErrorLogScreenChanging(string value);
-    partial void OnErrorLogScreenChanged();
-    partial void OnErrorLogDateTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnErrorLogDateTimeChanged();
-    partial void OnErrorLogByChanging(string value);
-    partial void OnErrorLogByChanged();
-    partial void OnErrorMachineNameChanging(string value);
-    partial void OnErrorMachineNameChanged();
-    partial void OnErrorLoginMachineNameChanging(string value);
-    partial void OnErrorLoginMachineNameChanged();
-    #endregion
-		
-		public ErrorLog()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogNo", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ErrorLogNo
-		{
-			get
-			{
-				return this._ErrorLogNo;
-			}
-			set
-			{
-				if ((this._ErrorLogNo != value))
-				{
-					this.OnErrorLogNoChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorLogNo = value;
-					this.SendPropertyChanged("ErrorLogNo");
-					this.OnErrorLogNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMethod", DbType="VarChar(250)")]
-		public string ErrorMethod
-		{
-			get
-			{
-				return this._ErrorMethod;
-			}
-			set
-			{
-				if ((this._ErrorMethod != value))
-				{
-					this.OnErrorMethodChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorMethod = value;
-					this.SendPropertyChanged("ErrorMethod");
-					this.OnErrorMethodChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogMessage", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string ErrorLogMessage
-		{
-			get
-			{
-				return this._ErrorLogMessage;
-			}
-			set
-			{
-				if ((this._ErrorLogMessage != value))
-				{
-					this.OnErrorLogMessageChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorLogMessage = value;
-					this.SendPropertyChanged("ErrorLogMessage");
-					this.OnErrorLogMessageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogScreen", DbType="VarChar(255)")]
-		public string ErrorLogScreen
-		{
-			get
-			{
-				return this._ErrorLogScreen;
-			}
-			set
-			{
-				if ((this._ErrorLogScreen != value))
-				{
-					this.OnErrorLogScreenChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorLogScreen = value;
-					this.SendPropertyChanged("ErrorLogScreen");
-					this.OnErrorLogScreenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogDateTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ErrorLogDateTime
-		{
-			get
-			{
-				return this._ErrorLogDateTime;
-			}
-			set
-			{
-				if ((this._ErrorLogDateTime != value))
-				{
-					this.OnErrorLogDateTimeChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorLogDateTime = value;
-					this.SendPropertyChanged("ErrorLogDateTime");
-					this.OnErrorLogDateTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogBy", DbType="VarChar(50)")]
-		public string ErrorLogBy
-		{
-			get
-			{
-				return this._ErrorLogBy;
-			}
-			set
-			{
-				if ((this._ErrorLogBy != value))
-				{
-					this.OnErrorLogByChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorLogBy = value;
-					this.SendPropertyChanged("ErrorLogBy");
-					this.OnErrorLogByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMachineName", DbType="VarChar(50)")]
-		public string ErrorMachineName
-		{
-			get
-			{
-				return this._ErrorMachineName;
-			}
-			set
-			{
-				if ((this._ErrorMachineName != value))
-				{
-					this.OnErrorMachineNameChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorMachineName = value;
-					this.SendPropertyChanged("ErrorMachineName");
-					this.OnErrorMachineNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLoginMachineName", DbType="VarChar(50)")]
-		public string ErrorLoginMachineName
-		{
-			get
-			{
-				return this._ErrorLoginMachineName;
-			}
-			set
-			{
-				if ((this._ErrorLoginMachineName != value))
-				{
-					this.OnErrorLoginMachineNameChanging(value);
-					this.SendPropertyChanging();
-					this._ErrorLoginMachineName = value;
-					this.SendPropertyChanged("ErrorLoginMachineName");
-					this.OnErrorLoginMachineNameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -8214,6 +7984,236 @@ namespace StockControl
 					this._PKTAG = value;
 					this.SendPropertyChanged("PKTAG");
 					this.OnPKTAGChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ErrorLog")]
+	public partial class ErrorLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ErrorLogNo;
+		
+		private string _ErrorMethod;
+		
+		private string _ErrorLogMessage;
+		
+		private string _ErrorLogScreen;
+		
+		private System.Nullable<System.DateTime> _ErrorLogDateTime;
+		
+		private string _ErrorLogBy;
+		
+		private string _ErrorMachineName;
+		
+		private string _ErrorLoginMachineName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnErrorLogNoChanging(long value);
+    partial void OnErrorLogNoChanged();
+    partial void OnErrorMethodChanging(string value);
+    partial void OnErrorMethodChanged();
+    partial void OnErrorLogMessageChanging(string value);
+    partial void OnErrorLogMessageChanged();
+    partial void OnErrorLogScreenChanging(string value);
+    partial void OnErrorLogScreenChanged();
+    partial void OnErrorLogDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnErrorLogDateTimeChanged();
+    partial void OnErrorLogByChanging(string value);
+    partial void OnErrorLogByChanged();
+    partial void OnErrorMachineNameChanging(string value);
+    partial void OnErrorMachineNameChanged();
+    partial void OnErrorLoginMachineNameChanging(string value);
+    partial void OnErrorLoginMachineNameChanged();
+    #endregion
+		
+		public ErrorLog()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogNo", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ErrorLogNo
+		{
+			get
+			{
+				return this._ErrorLogNo;
+			}
+			set
+			{
+				if ((this._ErrorLogNo != value))
+				{
+					this.OnErrorLogNoChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorLogNo = value;
+					this.SendPropertyChanged("ErrorLogNo");
+					this.OnErrorLogNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMethod", DbType="VarChar(250)")]
+		public string ErrorMethod
+		{
+			get
+			{
+				return this._ErrorMethod;
+			}
+			set
+			{
+				if ((this._ErrorMethod != value))
+				{
+					this.OnErrorMethodChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorMethod = value;
+					this.SendPropertyChanged("ErrorMethod");
+					this.OnErrorMethodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogMessage", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string ErrorLogMessage
+		{
+			get
+			{
+				return this._ErrorLogMessage;
+			}
+			set
+			{
+				if ((this._ErrorLogMessage != value))
+				{
+					this.OnErrorLogMessageChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorLogMessage = value;
+					this.SendPropertyChanged("ErrorLogMessage");
+					this.OnErrorLogMessageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogScreen", DbType="VarChar(255)")]
+		public string ErrorLogScreen
+		{
+			get
+			{
+				return this._ErrorLogScreen;
+			}
+			set
+			{
+				if ((this._ErrorLogScreen != value))
+				{
+					this.OnErrorLogScreenChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorLogScreen = value;
+					this.SendPropertyChanged("ErrorLogScreen");
+					this.OnErrorLogScreenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ErrorLogDateTime
+		{
+			get
+			{
+				return this._ErrorLogDateTime;
+			}
+			set
+			{
+				if ((this._ErrorLogDateTime != value))
+				{
+					this.OnErrorLogDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorLogDateTime = value;
+					this.SendPropertyChanged("ErrorLogDateTime");
+					this.OnErrorLogDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLogBy", DbType="VarChar(50)")]
+		public string ErrorLogBy
+		{
+			get
+			{
+				return this._ErrorLogBy;
+			}
+			set
+			{
+				if ((this._ErrorLogBy != value))
+				{
+					this.OnErrorLogByChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorLogBy = value;
+					this.SendPropertyChanged("ErrorLogBy");
+					this.OnErrorLogByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMachineName", DbType="VarChar(50)")]
+		public string ErrorMachineName
+		{
+			get
+			{
+				return this._ErrorMachineName;
+			}
+			set
+			{
+				if ((this._ErrorMachineName != value))
+				{
+					this.OnErrorMachineNameChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorMachineName = value;
+					this.SendPropertyChanged("ErrorMachineName");
+					this.OnErrorMachineNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLoginMachineName", DbType="VarChar(50)")]
+		public string ErrorLoginMachineName
+		{
+			get
+			{
+				return this._ErrorLoginMachineName;
+			}
+			set
+			{
+				if ((this._ErrorLoginMachineName != value))
+				{
+					this.OnErrorLoginMachineNameChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorLoginMachineName = value;
+					this.SendPropertyChanged("ErrorLoginMachineName");
+					this.OnErrorLoginMachineNameChanged();
 				}
 			}
 		}

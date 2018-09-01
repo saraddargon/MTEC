@@ -1,17 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbBarcodeNab" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=1.179.133.222,2018;Initial Catalog=dbBarcodeNab;User ID=sa" SettingsObjectName="StockControl.Properties.Settings" SettingsPropertyName="dbBarcodeNabConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.ErrorLog" Member="ErrorLogs">
-    <Type Name="ErrorLog">
-      <Column Name="ErrorLogNo" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ErrorMethod" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="ErrorLogMessage" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ErrorLogScreen" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="ErrorLogDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ErrorLogBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ErrorMachineName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ErrorLoginMachineName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbMTEC" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=1.179.133.222,2018;Initial Catalog=dbMTEC;User ID=sa" SettingsObjectName="StockControl.Properties.Settings" SettingsPropertyName="dbBarcodeNabConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Layout_Screen" Member="Layout_Screens">
     <Type Name="Layout_Screen">
       <Column Name="UserID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -409,6 +397,18 @@
       <Column Name="RefNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="PKTAG" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ErrorLog" Member="ErrorLogs">
+    <Type Name="ErrorLog">
+      <Column Name="ErrorLogNo" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ErrorMethod" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ErrorLogMessage" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ErrorLogScreen" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ErrorLogDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ErrorLogBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ErrorMachineName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ErrorLoginMachineName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.Sp_ADM03_OpenFormSelect" Method="Sp_ADM03_OpenFormSelect">
